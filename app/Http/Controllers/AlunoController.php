@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Str;
 
 use \App\Models\Aluno;
 use \App\Models\Curso;
@@ -29,6 +30,13 @@ class AlunoController extends Controller
         $aluno->ano = $request->ano;
 
         $aluno->curso()->associate(Curso::find($request->curso));
+
+        if($request->hasFile('foto')) {
+            $ext = $request->file('foto')->getClientOriginalExtension();
+            $name =  Str::uuid() . '.' . $ext;   // gera um nome único para o arquivo
+            $request->file('foto')->storeAs('fotos', $name, ['disk' => 'public']);
+            $aluno->foto = 'fotos/'.$name;
+        }
 
         $aluno->save();
 
@@ -63,16 +71,24 @@ class AlunoController extends Controller
         $aluno = Aluno::find($id);
 
         if(isset($aluno)) {
+
             $aluno->nome = $request->nome;
             $aluno->ano = $request->ano;
             $aluno->curso()->associate(Curso::find($request->curso));
+
+            if($request->hasFile('foto')) {
+                $ext = $request->file('foto')->getClientOriginalExtension();
+                $name =  Str::uuid() . '.' . $ext;
+                $request->file('foto')->storeAs('fotos', $name, ['disk' => 'public']);
+                $aluno->foto = 'fotos/'.$name;
+            }
 
             return redirect()->route('alunos.show', compact('aluno'));
         }
 
         return redirect()->route('alunos.index');
     }
-    
+
     public function destroy(string $id)
     {
         $aluno = Aluno::find($id);
