@@ -4,61 +4,77 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use \App\Models\Curso;
+
 class CursoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $cursos = Curso::all();
+        return view('cursos.index', compact('cursos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('cursos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $curso = new Curso();
+
+        $curso->nome = $request->nome;
+        $curso->duracao = $request->duracao;
+
+        $curso->save();
+
+        return view('cursos.show', compact('curso'));
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $curso = Curso::find($id);
+
+        if(isset($curso)) {
+            return view('cursos.show', compact('curso'));
+        }
+
+        return redirect()->route('cursos.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $curso = Curso::find($id);
+
+        if(isset($curso)) {
+            return view('cursos.edit', compact('curso'));
+        }
+
+        return redirect()->route('cursos.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $curso = Curso::find($id);
+
+        if(isset($curso)) {
+            $curso->nome = $request->nome;
+            $curso->duracao = $request->duracao;
+
+            $curso->save();
+        }
+
+        return redirect()->route('cursos.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $curso = Curso::find($id);
+
+        if(isset($curso)) {
+            $curso.delete();
+        }
+
+        return redirect()->route('cursos.index');
     }
 }
