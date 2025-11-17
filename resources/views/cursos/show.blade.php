@@ -1,0 +1,47 @@
+@extends('layouts.app')
+
+@section('title', 'Detalhes do Curso')
+
+@section('content')
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3">Detalhes do Curso</h1>
+    <a href="{{ route('cursos.index') }}" class="btn btn-secondary">Voltar</a>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <th>Nome</th>
+                    <td>{{ $curso->nome }}</td>
+                </tr>
+                <tr>
+                    <th>Duração</th>
+                    <td>{{ $curso->duracao }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="mt-3 d-flex gap-2">
+            <a href="{{ route('cursos.edit', $aluno->id) }}" class="btn btn-primary">Editar</a>
+
+            <a href="{{ route('cursos.edit', $aluno->id) }}" class="btn btn-primary">Listar Discentes</a>
+            <a href="{{ route('cursos.edit', $aluno->id) }}" class="btn btn-primary">Listar Disciplinas</a>
+
+            <form action="{{ route('cursos.destroy', $aluno->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" onclick="return confirm('Tem certeza que deseja eliminar este curso?')">
+                    Matar
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+@endsection
