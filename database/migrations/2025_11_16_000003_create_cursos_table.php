@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('nome');
             $table->integer('duracao');
             
-            $table->softDeleres();
+            $table->softDeletes();
 
             $table->timestamps();
         });

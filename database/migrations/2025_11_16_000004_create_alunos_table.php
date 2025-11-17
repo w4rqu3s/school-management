@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('ano');
             $table->string('foto')->nullable();
 
-            $table->unsignedBigInter('curso_id');
+            $table->unsignedBigInteger('curso_id');
             $table->foreign('curso_id')->references('id')->on('cursos');
 
             $table->softDeletes();
