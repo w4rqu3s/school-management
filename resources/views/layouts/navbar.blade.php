@@ -24,8 +24,12 @@
                     </a>
                 </li>
 
-                {{-- Você adiciona mais depois (cursos, professores, etc) --}}
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cursos.index') }}">
+                        Cursos
+                    </a>
+                </li>
+
             </ul>
 
         </div>
