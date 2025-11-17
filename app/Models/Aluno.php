@@ -11,7 +11,7 @@ class Aluno extends Model
 {
     use SoftDeletes;
 
-    public function curso(): belongsTo {
+    public function curso() {
         return $this->belongsTo(Curso::class);
     }
 } 

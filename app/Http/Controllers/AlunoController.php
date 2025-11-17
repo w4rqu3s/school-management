@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\Models\Aluno;
+use \App\Models\Curso;
 
 class AlunoController extends Controller
 {
@@ -25,7 +26,7 @@ class AlunoController extends Controller
 
         $aluno->nome = $request->nome;
         $aluno->ano = $request->ano;
-        $aluno->curso = 1;
+        $aluno->curso()->associate(Curso::find(1));
 
         $aluno->save();
 
@@ -61,7 +62,7 @@ class AlunoController extends Controller
         if(isset($aluno)) {
             $aluno->nome = $request->nome;
             $aluno->ano = $request->ano;
-            $aluno->curso = 1;
+            $aluno->curso()->associate(Curso::find(1));
 
             return redirect()->route('alunos.show', compact('aluno'));
         }

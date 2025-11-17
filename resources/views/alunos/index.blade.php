@@ -25,7 +25,7 @@
                             <a href="{{ route('alunos.edit', $item->id) }}">EDITAR</a>
                         </td>
                         <td>
-                            <a href="{{ route('alunos.delete', $item->id) }}">EDITAR</a>
+                            <a href="{{ route('alunos.delete', $item->id) }}">DESTRUIR</a>
                         </td>
                     </tr>
                 @endforeach

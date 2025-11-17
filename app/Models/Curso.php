@@ -12,7 +12,7 @@ class Curso extends Model
 {
     use SoftDeletes;
 
-    public function alunos(): hasMany {
+    public function alunos() {
         return $this->hasMany(Aluno::class);
     }
 }
