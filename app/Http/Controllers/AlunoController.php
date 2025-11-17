@@ -17,7 +17,8 @@ class AlunoController extends Controller
 
     public function create()
     {
-        return view('alunos.create');
+        $cursos = Curso::all();
+        return view('alunos.create', compact('cursos'));
     }
 
     public function store(Request $request)
@@ -26,7 +27,8 @@ class AlunoController extends Controller
 
         $aluno->nome = $request->nome;
         $aluno->ano = $request->ano;
-        $aluno->curso()->associate(Curso::find(1));
+
+        $aluno->curso()->associate(Curso::find($request->curso));
 
         $aluno->save();
 
@@ -47,9 +49,10 @@ class AlunoController extends Controller
     public function edit(string $id)
     {
         $aluno = Aluno::find($id);
+        $cursos = Curso::all();
 
         if(isset($aluno)) {
-            return view('alunos.edit', compact('aluno'));
+            return view('alunos.edit', compact(['aluno', 'cursos']));
         }
 
         return redirect()->route('alunos.index');
@@ -62,21 +65,14 @@ class AlunoController extends Controller
         if(isset($aluno)) {
             $aluno->nome = $request->nome;
             $aluno->ano = $request->ano;
-            $aluno->curso()->associate(Curso::find(1));
+            $aluno->curso()->associate(Curso::find($request->curso));
 
             return redirect()->route('alunos.show', compact('aluno'));
         }
 
         return redirect()->route('alunos.index');
     }
-
-    public function delete(string $id)    // to confirm destroy
-    {
-        $aluno = Aluno::find($id);
-
-        return view('alunos.delete', compact('aluno'));
-    }
-
+    
     public function destroy(string $id)
     {
         $aluno = Aluno::find($id);
@@ -88,3 +84,4 @@ class AlunoController extends Controller
         return redirect()->route('alunos.index');
     }
 }
+

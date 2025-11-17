@@ -9,5 +9,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/alunos', AlunoController::class);
-Route::get('/alunos/{aluno}/delete', [AlunoController::class, 'delete'])->name('alunos.delete');
 

@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ route('alunos.store') }}" method="post">
+@extends('layouts.app')
 
-        @csrf
+@section('title', 'Cadastrar Aluno')
 
-        <label for="nome">NOME:</label>
-        <input type="text" id="nome" name="nome"><br><br>
+@section('content')
+    <h1 class="h3 mb-4">Cadastrar Aluno</h1>
 
-        <label for="ano">ANO:</label>
-        <input type="ano" id="ano" name="ano"><br><br>
+    <div class="card">
+        <div class="card-body">
 
-        <button type="submit">Enviar</button>
+            <form action="{{ route('alunos.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
-    </form>
+                @include('alunos._form')
 
-    <a href="{{ route('alunos.index') }}">VOLTAR</a>
-</body>
-</html>
+                <button class="btn btn-success">Salvar</button>
+
+                <a href="{{ route('alunos.index') }}" class="btn btn-secondary ms-2">
+                    Voltar
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+@endsection

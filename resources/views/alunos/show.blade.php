@@ -1,34 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div>
-        <table>
+@extends('layouts.app')
+
+@section('title', 'Detalhes do Aluno')
+
+@section('content')
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3">Detalhes do Aluno</h1>
+    <a href="{{ route('alunos.index') }}" class="btn btn-secondary">Voltar</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
             <tbody>
                 <tr>
-                    <td>NOME:</td>
-                    <td>{{ $aluno->nome }}</td>    
+                    <th>Nome</th>
+                    <td>{{ $aluno->nome }}</td>
                 </tr>
                 <tr>
-                    <td>ANO:</td>
-                    <td>{{ $aluno->ano }}</td>    
+                    <th>Período / Grau</th>
+                    <td>{{ $aluno->ano }}</td>
                 </tr>
                 <tr>
-                    <td>CURSO:</td>
-                    <td>{{ $aluno->curso->nome }}</td>    
-                </tr>
-                <tr>
-                    <td><a href="{{ route('alunos.edit', $aluno->id) }}">EDITAR</a></td>
-                    <td><a href="{{ route('alunos.delete', $aluno->id) }}">DESTRUIR</a></td>    
+                    <th>Curso</th>
+                    <td>{{ $aluno->curso->nome }}</td>
                 </tr>
             </tbody>
         </table>
+
+        <div class="mt-3 d-flex gap-2">
+            <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-primary">Editar</a>
+
+            <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar este aluno?')">
+                    Deletar
+                </button>
+            </form>
+        </div>
+
     </div>
-    <a href="{{ url()->previous() }}">VOLTAR</a>
-</body>
-</html>
+</div>
+
+@endsection

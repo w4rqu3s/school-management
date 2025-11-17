@@ -1,27 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ route('alunos.update', $aluno->id) }}" method="post">
+@extends('layouts.app')
 
-        @csrf
-        @method('PUT')
+@section('title', 'Editar Aluno')
 
-        <label for="nome">NOME:</label>
-        <input type="text" id="nome" name="nome" value = "{{ $aluno->nome }}"><br><br>
+@section('content')
+    <h1 class="h3 mb-4">Editar Aluno</h1>
 
-        <label for="ano">ANO:</label>
-        <input type="ano" id="ano" name="ano" value = "{{ $aluno->ano }}"><br><br>
+    <div class="card">
+        <div class="card-body">
 
-        <button type="submit">Enviar</button>
+            <form action="{{ route('alunos.update', $aluno->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
 
-    </form>
+                @include('alunos._form')
 
-    <a href="{{ url()->previous() }}">VOLTAR</a>
-</body>
-</html>
+                <button class="btn btn-primary">Atualizar</button>
+
+                <a href="{{ route('alunos.index') }}" class="btn btn-secondary ms-2">
+                    Voltar
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+@endsection
