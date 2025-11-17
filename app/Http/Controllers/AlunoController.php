@@ -61,12 +61,19 @@ class AlunoController extends Controller
         if(isset($aluno)) {
             $aluno->nome = $request->nome;
             $aluno->ano = $request->ano;
-            $aluno->curso = $request->curso;
+            $aluno->curso = 1;
 
             return redirect()->route('alunos.show', compact('aluno'));
         }
 
         return redirect()->route('alunos.index');
+    }
+
+    public function delete(string $id)    // to confirm destroy
+    {
+        $aluno = Aluno::find($id);
+
+        return view('alunos.delete', compact('aluno'));
     }
 
     public function destroy(string $id)
