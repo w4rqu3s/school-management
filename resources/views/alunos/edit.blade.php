@@ -7,9 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('alunos.update') }}" method="post">
+    <form action="{{ route('alunos.update', $aluno->id) }}" method="post">
 
         @csrf
+        @method('PUT')
 
         <label for="nome">NOME:</label>
         <input type="text" id="nome" name="nome" value = "{{ $aluno->nome }}"><br><br>
@@ -21,6 +22,6 @@
 
     </form>
 
-    <a href="{{ route('alunos.index') }}">VOLTAR</a>
+    <a href="{{ url()->previous() }}">VOLTAR</a>
 </body>
 </html>

@@ -22,10 +22,7 @@
                         <td>{{ $item->curso->nome }}</td>
                         <td>{{ $item->ano }}</td>
                         <td>
-                            <a href="{{ route('alunos.edit', $item->id) }}">EDITAR</a>
-                        </td>
-                        <td>
-                            <a href="{{ route('alunos.delete', $item->id) }}">DESTRUIR</a>
+                            <a href="{{ route('alunos.show', $item->id) }}">ACESSAR</a>
                         </td>
                     </tr>
                 @endforeach
