@@ -18,6 +18,7 @@
         type="file" 
         id="foto" 
         name="foto"
+        value="{{ old('foto', $aluno->foto ?? '') }}"
         class="form-control"
         accept="image/*"
     >
