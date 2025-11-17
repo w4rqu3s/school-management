@@ -8,15 +8,15 @@
     <div class="card">
         <div class="card-body">
 
-            <form action="{{ route('cursos.update', $aluno->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('cursos.update', $curso->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                @include('alunos._form')
+                @include('cursos._form')
 
                 <button class="btn btn-primary">Atualizar</button>
 
-                <a href="{{ route('alunos.index') }}" class="btn btn-secondary ms-2">
+                <a href="{{ route('cursos.index') }}" class="btn btn-secondary ms-2">
                     Voltar
                 </a>
 

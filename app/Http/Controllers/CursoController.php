@@ -72,7 +72,7 @@ class CursoController extends Controller
         $curso = Curso::find($id);
 
         if(isset($curso)) {
-            $curso.delete();
+            $curso->delete();
         }
 
         return redirect()->route('cursos.index');
