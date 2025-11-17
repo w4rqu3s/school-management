@@ -12,11 +12,11 @@
 
 <div class="card">
     <div class="card-body">
-        
+
         <div class="row g-0">
             <div class="col-md-4 text-center p-3">
                 <img 
-                    src="{{ $aluno->foto ? asset('storage/' . $aluno->foto) : asset('images/default-avatar.png') }}" 
+                    src="{{ $aluno->foto ? asset('storage/' . $aluno->foto) : asset('images/default-avatar.webp') }}" 
                     alt="{{ $aluno->nome }}" 
                     class="img-fluid rounded" 
                     style="max-height: 200px;"
