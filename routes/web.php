@@ -17,7 +17,7 @@ Route::get('/home', function() {
 
 Route::resource('/alunos', AlunoController::class)
     ->middleware(['auth', 'verified']);
-Route::get('/alunos/{id}/report', [AlunoController::class, 'report'])->name('alunos.report')
+Route::get('/alunos/{id}/report', [AlunoController::class, 'report'])->name('aluno.report')
     ->middleware(['auth', 'verified']);
 
 Route::resource('/cursos', CursoController::class)

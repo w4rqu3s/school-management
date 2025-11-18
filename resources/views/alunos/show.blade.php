@@ -50,7 +50,7 @@
 
         <div class="mt-3 d-flex gap-2">
 
-            <a href="{{ route('alunos.report', $aluno->id) }}" class="btn btn-danger">
+            <a href="{{ route('aluno.report', $aluno->id) }}" class="btn btn-danger">
                 <i class="bi bi-file-earmark-pdf-fill"></i>
             </a>
 
