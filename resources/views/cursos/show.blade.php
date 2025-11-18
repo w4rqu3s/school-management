@@ -29,7 +29,7 @@
         <div class="mt-3 d-flex gap-2">
             <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-primary">Editar</a>
 
-            <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-secondary">Listar Discentes</a>
+            <a href="{{ route('cursos.alunos', $curso->id) }}" class="btn btn-secondary">Listar Discentes</a>
             <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-secondary">Listar Disciplinas</a>
 
             <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST">

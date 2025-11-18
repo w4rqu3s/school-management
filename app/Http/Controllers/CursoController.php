@@ -14,6 +14,20 @@ class CursoController extends Controller
         return view('cursos.index', compact('cursos'));
     }
 
+    public function indexAlunos(string $id) {
+        $curso = Curso::find($id);
+        $alunos = $curso->alunos;
+
+        return view('alunos.index', compact('alunos'));
+    }
+
+    public function indexDisciplinas(string $id) {
+        $curso = Curso::find($id);
+        $disciplinas = $curso->disciplinas;
+
+        return view('disciplinas.index', compact('disciplinas'));
+    }
+
     public function create()
     {
         return view('cursos.create');

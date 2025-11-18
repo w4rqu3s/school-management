@@ -11,7 +11,10 @@ Route::get('/', function () {
 });
 
 Route::resource('/alunos', AlunoController::class);
+
 Route::resource('/cursos', CursoController::class);
+Route::get('/cursos/{id}/alunos', [CursoController::class, 'indexAlunos'])->name('cursos.alunos');
+
 Route::resource('/disciplinas', DisciplinaController::class);
 
 
