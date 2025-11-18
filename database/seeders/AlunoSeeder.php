@@ -24,6 +24,8 @@ class AlunoSeeder extends Seeder
             database_path('seeders/fotos_testes/lulu.webp'),
             database_path('seeders/fotos_testes/chihuahua.avif'),
             database_path('seeders/fotos_testes/beagle.webp'),
+            database_path('seeders/fotos_testes/chowchow.jpg'),
+            database_path('seeders/fotos_testes/dalmata.jpg')
         ];
 
         // Dados iniciais sem foto
@@ -35,7 +37,9 @@ class AlunoSeeder extends Seeder
             ["nome" => "ASAFE ELIAS MARQUES", "ano" => 3, "curso_id" => 1],
             ["nome" => "HANAE ROSA TERATO RAMOS", "ano" => 3, "curso_id" => 1],
             ["nome" => "DANIEL GARBETTO CARDOSO", "ano" => 3, "curso_id" => 1],
-            ["nome" => "ISAAC", "ano" => 1, "curso_id" => 1],
+            ["nome" => "ISAAC", "ano" => 1, "curso_id" => 4],
+            ["nome" => "HIROSHI", "ano" => 2, "curso_id" => 2],
+            ["nome" => "MORGAN BEATRICE MEDEIROS", "ano" => 2, "curso_id" => 4]
         ];
 
         foreach ($data as &$aluno) {
