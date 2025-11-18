@@ -38,7 +38,41 @@
 
             </ul>
 
-        </div>
+            {{-- Seção do Usuário --}}
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @auth
+                        <span class="ps-1 text-white">
+                            <i class="bi bi-person-circle me-1"></i>
+                              {{
+                                Auth::user()
+                                ?
+                                    explode(" ", Auth::user()->name)[0]
+                                :   
+                                    'Anônimo'
+                              }}
+                            </span>
+                        @endauth
+                    </a>
 
+                    {{-- Opções --}}
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <form method="POST" action="{{ route('logout') }}">
+                        @csrf   
+                          <li>
+                              <a 
+                                class="dropdown-item" 
+                                href="" 
+                                onclick="event.preventDefault(); this.closest('form').submit();"
+                              >
+                                <span class="ps-1 text-secondary">Sair</span>
+                              </a>
+                          </li>
+                        </form>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
