@@ -37,7 +37,7 @@ class CursoController extends Controller
     {
         $curso = new Curso();
 
-        $curso->nome = $request->nome;
+        $curso->nome = strtoupper($request->nome);
         $curso->duracao = $request->duracao;
 
         $curso->save();
@@ -72,7 +72,7 @@ class CursoController extends Controller
         $curso = Curso::find($id);
 
         if(isset($curso)) {
-            $curso->nome = $request->nome;
+            $curso->nome = strtoupper($request->nome);
             $curso->duracao = $request->duracao;
 
             $curso->save();

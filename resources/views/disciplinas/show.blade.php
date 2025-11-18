@@ -25,7 +25,14 @@
                 </tr>
                 <tr>
                     <th>Curso</th>
-                    <td>{{ $disciplina->curso->nome }}</td>
+                    <td>
+                        {{ $disciplina->curso->nome }}
+                        <a 
+                            href="{{ route('cursos.show', $disciplina->curso->id) }}" 
+                            class="btn btn-secondary btn-sm float-end">
+                            Acessar Curso
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

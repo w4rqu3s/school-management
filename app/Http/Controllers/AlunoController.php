@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Str;
- use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 use \App\Models\Aluno;
 use \App\Models\Curso;
@@ -27,7 +27,7 @@ class AlunoController extends Controller
     {
         $aluno = new Aluno();
 
-        $aluno->nome = $request->nome;
+        $aluno->nome = strtoupper($request->nome);
         $aluno->ano = $request->ano;
 
         $aluno->curso()->associate(Curso::find($request->curso));
@@ -73,7 +73,7 @@ class AlunoController extends Controller
 
         if(isset($aluno)) {
 
-            $aluno->nome = $request->nome;
+            $aluno->nome = strtoupper($request->nome);
             $aluno->ano = $request->ano;
             $aluno->curso()->associate(Curso::find($request->curso));
 
@@ -83,6 +83,8 @@ class AlunoController extends Controller
                 $request->file('foto')->storeAs('fotos', $name, ['disk' => 'public']);
                 $aluno->foto = 'fotos/'.$name;
             }
+
+            $aluno->save();
 
             return redirect()->route('alunos.show', $aluno->id);
         }

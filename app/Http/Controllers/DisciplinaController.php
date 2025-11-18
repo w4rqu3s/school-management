@@ -27,7 +27,7 @@ class DisciplinaController extends Controller
     {
         $disciplina = new Disciplina();
 
-        $disciplina->nome = $request->nome;
+        $disciplina->nome = strtoupper($request->nome);
         $disciplina->aulas = $request->aulas;
         $disciplina->curso()->associate(Curso::find($request->curso));
 
@@ -65,7 +65,7 @@ class DisciplinaController extends Controller
         $disciplina = Disciplina::find($id);
 
         if(isset($disciplina)) {
-            $disciplina->nome = $request->nome;
+            $disciplina->nome = strtoupper($request->nome);
             $disciplina->aulas = $request->aulas;
             $disciplina->curso()->associate(Curso::find($request->curso));
 
