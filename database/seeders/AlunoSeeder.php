@@ -35,6 +35,7 @@ class AlunoSeeder extends Seeder
             ["nome" => "ASAFE ELIAS MARQUES", "ano" => 3, "curso_id" => 1],
             ["nome" => "HANAE ROSA TERATO RAMOS", "ano" => 3, "curso_id" => 1],
             ["nome" => "DANIEL GARBETTO CARDOSO", "ano" => 3, "curso_id" => 1],
+            ["nome" => "ISAAC", "ano" => 1, "curso_id" => 1],
         ];
 
         foreach ($data as &$aluno) {
