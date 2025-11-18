@@ -49,7 +49,13 @@
         </table>
 
         <div class="mt-3 d-flex gap-2">
+
+            <a href="{{ route('alunos.report', $aluno->id) }}" class="btn btn-danger">
+                <i class="bi bi-file-earmark-pdf-fill"></i>
+            </a>
+
             <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-primary">Editar</a>
+
 
             <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST">
                 @csrf
@@ -58,6 +64,7 @@
                     Destruir
                 </button>
             </form>
+
         </div>
 
     </div>

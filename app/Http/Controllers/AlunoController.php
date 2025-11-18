@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use \App\Models\Aluno;
 use \App\Models\Curso;
 
@@ -106,6 +108,17 @@ class AlunoController extends Controller
         }
 
         return redirect()->route('alunos.index');
+    }
+
+    public function report($id) {
+        $aluno = Aluno::with('curso')->findOrFail($id);
+
+        $pdf = Pdf::loadView('alunos.report', compact('aluno'));
+
+        return $pdf->stream('{$aluno->nome}_report.pdf');
+
+        // return $pdf->download('document.pdf');
+
     }
 }
 
