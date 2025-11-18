@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use \App\Models\Aluno;
+use \App\Models\Disciplina;
 
 
 class Curso extends Model
@@ -14,5 +15,9 @@ class Curso extends Model
 
     public function alunos() {
         return $this->hasMany(Aluno::class);
+    }
+
+    public function disciplinas() {
+        return $this->hasMany(Disciplina::class);
     }
 }

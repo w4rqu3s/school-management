@@ -42,7 +42,7 @@ class CursoController extends Controller
 
         $curso->save();
 
-        return view('cursos.show', compact('curso'));
+        return view('cursos.show', $curso->id);
     }
 
     public function show(string $id)
@@ -76,6 +76,8 @@ class CursoController extends Controller
             $curso->duracao = $request->duracao;
 
             $curso->save();
+
+            return redirect()->route('cursos.show', $curso->id);
         }
 
         return redirect()->route('cursos.index');

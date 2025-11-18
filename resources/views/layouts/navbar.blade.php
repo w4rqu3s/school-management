@@ -30,6 +30,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('disciplinas.index') }}">
+                        Disciplinas
+                    </a>
+                </li>
+
             </ul>
 
         </div>

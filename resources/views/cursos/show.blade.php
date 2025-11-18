@@ -30,7 +30,7 @@
             <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-primary">Editar</a>
 
             <a href="{{ route('cursos.alunos', $curso->id) }}" class="btn btn-secondary">Listar Discentes</a>
-            <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-secondary">Listar Disciplinas</a>
+            <a href="{{ route('cursos.disciplinas', $curso->id) }}" class="btn btn-secondary">Listar Disciplinas</a>
 
             <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST">
                 @csrf
