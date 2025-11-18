@@ -8,7 +8,7 @@ use \App\Models\Permission;
 
 class PermissionController extends Controller
 {
-    public static function loadPermission($role) {
+    public static function loadPermissions($role) {
 
         $array_permissions = Array();
         $perm = Permission::with(['resource'])  
@@ -17,7 +17,7 @@ class PermissionController extends Controller
             $array_permissions[$item->resource->name] =
                 (boolean) $item->permission;                // vê se tem ou não a permissão e atribui
         }
-        // dd($arr_permissions)
+        dd($array_permissions);
         session(['user_permissions' => $arr_permissions]);
     }
 

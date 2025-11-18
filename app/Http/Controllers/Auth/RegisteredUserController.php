@@ -45,6 +45,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        
+        event(new AuthenticationEvent(Auth::user()->role_id));      // Registra o Evento de Autenticação - Permissão
+
         return redirect(route('home', absolute: false));
     }
 }
