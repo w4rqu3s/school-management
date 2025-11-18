@@ -23,6 +23,7 @@ class AlunoSeeder extends Seeder
             database_path('seeders/fotos_testes/asafepug7.webp'),
             database_path('seeders/fotos_testes/lulu.webp'),
             database_path('seeders/fotos_testes/chihuahua.avif'),
+            database_path('seeders/fotos_testes/beagle.webp'),
         ];
 
         // Dados iniciais sem foto
