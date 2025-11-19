@@ -14,16 +14,22 @@ class UserSeeder extends Seeder
         $data = [
             [
                 "name" => "ANTÔNIO MARCOS SILVA",
-                'email' => "antonio@gmail.com",
+                "email" => "antonio@gmail.com",
                 "password" => Hash::make('@1234@5678'),
-                "role_id" => 1,
+                "role_id" => 1
             ],
             [
                 "name" => "RAFAELA SANTOS",
-                'email' => "rafaela@gmail.com",
+                "email" => "rafaela@gmail.com",
                 "password" => Hash::make('@1234@5678'),
-                "role_id" => 2,
+                "role_id" => 2
             ],
+            [
+                "name" => "VICTOR PECINE MARQUES",
+                "email" => "w4rqu3s@gmail.com",
+                "password" => Hash::make('s3cr3t'),
+                "role_id" =>2
+            ]
         ];
         DB::table('users')->insert($data);
     }
