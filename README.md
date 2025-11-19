@@ -94,7 +94,7 @@ Além disso, o sistema conta com:
 ### 1. Clonar o repositório
 ```bash
 git clone https://github.com/w4rqu3s/school-management.git
-cd seu_repositorio
+cd school-management
 ````
 
 ### 2. Instalar dependências
@@ -174,7 +174,7 @@ Dentro do `AlunoController` existe:
 public function gerarPdf($id)
 {
     $aluno = Aluno::with('curso')->findOrFail($id);
-    $pdf = Pdf::loadView('alunos.pdf', compact('aluno'));
+    $pdf = Pdf::loadView('alunos.report', compact('aluno'));
     return $pdf->stream("relatorio_{$aluno->nome}.pdf");
 }
 ```
