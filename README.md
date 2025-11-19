@@ -93,7 +93,7 @@ Além disso, o sistema conta com:
 
 ### 1. Clonar o repositório
 ```bash
-git clone https://github.com/seu_usuario/seu_repositorio.git
+git clone https://github.com/w4rqu3s/school-management.git
 cd seu_repositorio
 ````
 
