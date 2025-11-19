@@ -18,23 +18,29 @@
 
             <ul class="navbar-nav">
 
+                @can('viewAny', App\Models\Aluno::class)  
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('alunos.index') }}">
                         Alunos
                     </a>
                 </li>
+                @endcan
 
+                @can('viewAny', App\Models\Curso::class)  
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cursos.index') }}">
                         Cursos
                     </a>
                 </li>
+                @endcan
 
+                @can('viewAny', App\Models\Disciplina::class)  
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('disciplinas.index') }}">
                         Disciplinas
                     </a>
                 </li>
+                @endcan
 
             </ul>
 

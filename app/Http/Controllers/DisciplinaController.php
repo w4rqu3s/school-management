@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 use \App\Models\Disciplina;
 use \App\Models\Curso;
@@ -11,6 +12,8 @@ class DisciplinaController extends Controller
 {
     public function index()
     {
+        Gate::authorize('viewAny', Disciplina::class);
+
         $disciplinas = Disciplina::all();
 
         return view('disciplinas.index', compact('disciplinas'));
@@ -18,6 +21,8 @@ class DisciplinaController extends Controller
 
     public function create()
     {
+        Gate::authorize('create', Disciplina::class);
+
         $cursos = Curso::all();
 
         return view('disciplinas.create', compact('cursos'));
@@ -25,6 +30,8 @@ class DisciplinaController extends Controller
 
     public function store(Request $request)
     {
+        Gate::authorize('create', Disciplina::class);
+
         $disciplina = new Disciplina();
 
         $disciplina->nome = strtoupper($request->nome);
@@ -40,6 +47,8 @@ class DisciplinaController extends Controller
     {
         $disciplina = Disciplina::find($id);
 
+        Gate::authorize('create', $disciplina);
+
         if(isset($disciplina)) { 
             return view('disciplinas.show', compact('disciplina'));
         }
@@ -50,6 +59,8 @@ class DisciplinaController extends Controller
     public function edit(string $id)
     {
         $disciplina = Disciplina::find($id);
+
+        Gate::authorize('update', $disciplina);
 
         if(isset($disciplina)) {
             $cursos = Curso::all();
@@ -63,6 +74,8 @@ class DisciplinaController extends Controller
     public function update(Request $request, string $id)
     {
         $disciplina = Disciplina::find($id);
+
+        Gate::authorize('update', $disciplina);
 
         if(isset($disciplina)) {
             $disciplina->nome = strtoupper($request->nome);
@@ -80,6 +93,8 @@ class DisciplinaController extends Controller
     public function destroy(string $id)
     {
         $disciplina = Disciplina::find($id);
+
+        Gate::authorize('delete', $disciplina);
 
         if(isset($disciplina)) {
             $disciplina->delete();

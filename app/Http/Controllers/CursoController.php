@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 use \App\Models\Curso;
 
@@ -10,11 +11,15 @@ class CursoController extends Controller
 {
     public function index()
     {
+        Gate::authorize('viewAny', Curso::class);
+
         $cursos = Curso::all();
         return view('cursos.index', compact('cursos'));
     }
 
     public function indexAlunos(string $id) {
+        Gate::authorize('viewDiscents', Curso::class);
+
         $curso = Curso::find($id);
         $alunos = $curso->alunos;
 
@@ -22,6 +27,8 @@ class CursoController extends Controller
     }
 
     public function indexDisciplinas(string $id) {
+        Gate::authorize('viewClasses', Curso::class);
+
         $curso = Curso::find($id);
         $disciplinas = $curso->disciplinas;
 
@@ -30,11 +37,15 @@ class CursoController extends Controller
 
     public function create()
     {
+        Gate::authorize('create', Curso::class);
+
         return view('cursos.create');
     }
 
     public function store(Request $request)
     {
+        Gate::authorize('create', Curso::class);
+
         $curso = new Curso();
 
         $curso->nome = strtoupper($request->nome);
@@ -49,6 +60,8 @@ class CursoController extends Controller
     {
         $curso = Curso::find($id);
 
+        Gate::authorize('view', $curso);
+
         if(isset($curso)) {
             return view('cursos.show', compact('curso'));
         }
@@ -60,6 +73,8 @@ class CursoController extends Controller
     {
         $curso = Curso::find($id);
 
+        Gate::authorize('update', $curso);
+
         if(isset($curso)) {
             return view('cursos.edit', compact('curso'));
         }
@@ -70,6 +85,8 @@ class CursoController extends Controller
     public function update(Request $request, string $id)
     {
         $curso = Curso::find($id);
+
+        Gate::authorize('update', $curso);
 
         if(isset($curso)) {
             $curso->nome = strtoupper($request->nome);
@@ -86,6 +103,8 @@ class CursoController extends Controller
     public function destroy(string $id)
     {
         $curso = Curso::find($id);
+
+        Gate::authorize('delete', $curso);
 
         if(isset($curso)) {
             $curso->delete();

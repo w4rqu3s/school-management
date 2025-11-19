@@ -7,9 +7,11 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3">Cursos</h1>
 
+        @can('viewAny', App\Models\Curso::class)
         <a href="{{ route('cursos.create') }}" class="btn btn-primary">
             Novo Curso
         </a>
+        @endcan
     </div>
 
     <div class="card">
@@ -30,6 +32,7 @@
                             <td>{{ $curso->nome }}</td>
                             <td>{{ $curso->duracao }}</td>
 
+                            @can('view', $curso)
                             <td class="text-center">
                                 <a 
                                     href="{{ route('cursos.show', $curso->id) }}" 
@@ -38,6 +41,7 @@
                                     Acessar
                                 </a>
                             </td>
+                            @endcan
                         </tr>
 
                     @empty

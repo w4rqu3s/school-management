@@ -27,19 +27,24 @@
                     <th>Curso</th>
                     <td>
                         {{ $disciplina->curso->nome }}
+                        @can('view', $disciplina->curso)
                         <a 
                             href="{{ route('cursos.show', $disciplina->curso->id) }}" 
                             class="btn btn-secondary btn-sm float-end">
                             Acessar Curso
                         </a>
+                        @endcan
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <div class="mt-3 d-flex gap-2">
+            @can('update', $disciplina)
             <a href="{{ route('disciplinas.edit', $disciplina->id) }}" class="btn btn-primary">Editar</a>
+            @endcan
 
+            @can('delete', $disciplina)
             <form action="{{ route('disciplinas.destroy', $disciplina->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -47,6 +52,7 @@
                     Desintegrar
                 </button>
             </form>
+            @endcan
         </div>
 
     </div>

@@ -15,26 +15,26 @@ class ResourceSeeder extends Seeder
     {
         $data = [
             // CURSO
-            ["name" => "curso.index"], // 1
-            ["name" => "curso.create"], // 2
-            ["name" => "curso.show"], // 3
-            ["name" => "curso.edit"], // 4
-            ["name" => "curso.delete"], // 5
-            ["name" => "curso.alunos"], // 6
-            ["name" => "curso.disciplinas"], // 7
+            ["name" => "cursos.index"], // 1
+            ["name" => "cursos.create"], // 2
+            ["name" => "cursos.show"], // 3
+            ["name" => "cursos.edit"], // 4
+            ["name" => "cursos.delete"], // 5
+            ["name" => "cursos.alunos"], // 6
+            ["name" => "cursos.disciplinas"], // 7
             // ALUNO
-            ["name" => "aluno.index"], // 8
-            ["name" => "aluno.create"], // 9
-            ["name" => "aluno.show"], // 10
-            ["name" => "aluno.edit"], // 11
-            ["name" => "aluno.delete"], // 12
+            ["name" => "alunos.index"], // 8
+            ["name" => "alunos.create"], // 9
+            ["name" => "alunos.show"], // 10
+            ["name" => "alunos.edit"], // 11
+            ["name" => "alunos.delete"], // 12
             ["name" => "aluno.report"], // 13
             // DISCIPLINA
-            ["name" => "disciplina.index"], // 14
-            ["name" => "disciplina.create"], // 15
-            ["name" => "disciplina.show"], // 16
-            ["name" => "disciplina.edit"], // 17
-            ["name" => "disciplina.delete"], // 18
+            ["name" => "disciplinas.index"], // 14
+            ["name" => "disciplinas.create"], // 15
+            ["name" => "disciplinas.show"], // 16
+            ["name" => "disciplinas.edit"], // 17
+            ["name" => "disciplinas.delete"], // 18
         ];
         DB::table('resources')->insert($data);
     }

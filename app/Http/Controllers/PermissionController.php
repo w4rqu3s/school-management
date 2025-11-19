@@ -18,14 +18,14 @@ class PermissionController extends Controller
                 (boolean) $item->permission;                // vê se tem ou não a permissão e atribui
         }
         // dd($array_permissions);
-        session(['user_permissions' => $arr_permissions]);
+        session(['user_permissions' => $array_permissions]);
     }
 
     public static function isAuthorized($resource) {
         $permissions = session('user_permissions');
 
         if(array_key_exists($resource, $permissions)) {
-            return $permissions([$resource]);
+            return $permissions[$resource];
         }
 
         return false;

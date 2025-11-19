@@ -30,7 +30,8 @@ class PermissionSeeder extends Seeder
             ["role_id" => 1, "resource_id" => 14, "permission" => 0],   // ver disciplinas
             ["role_id" => 1, "resource_id" => 15, "permission" => 0],   // criar disciplina
             ["role_id" => 1, "resource_id" => 16, "permission" => 0],   // ver uma disciplina
-            ["role_id" => 1, "resource_id" => 17, "permission" => 0],   // deletar disciplina
+            ["role_id" => 1, "resource_id" => 17, "permission" => 0],   // editar disciplina
+            ["role_id" => 1, "resource_id" => 18, "permission" => 0],   // deletar disciplina
             // COORDERNADOR - CURSO
             ["role_id" => 2, "resource_id" => 1, "permission" => 1],    // ver cursos
             ["role_id" => 2, "resource_id" => 2, "permission" => 1],    // criar curso
@@ -50,7 +51,8 @@ class PermissionSeeder extends Seeder
             ["role_id" => 2, "resource_id" => 14, "permission" => 1],   // ver disciplinas
             ["role_id" => 2, "resource_id" => 15, "permission" => 1],   // criar disciplina
             ["role_id" => 2, "resource_id" => 16, "permission" => 1],   // ver uma disciplina
-            ["role_id" => 2, "resource_id" => 17, "permission" => 1],   // deletar disciplina
+            ["role_id" => 2, "resource_id" => 17, "permission" => 1],   // editar disciplina
+            ["role_id" => 2, "resource_id" => 18, "permission" => 1],   // deletar disciplina
         ];
         DB::table('permissions')->insert($data);
     }

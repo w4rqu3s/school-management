@@ -38,11 +38,13 @@
                     <th>Curso</th>
                     <td>
                         {{ $aluno->curso->nome }}
+                        @can('view', $aluno->curso)
                         <a 
                             href="{{ route('cursos.show', $aluno->curso->id) }}" 
                             class="btn btn-secondary btn-sm float-end">
                             Acessar Curso
                         </a>
+                        @endcan
                     </td>
                 </tr>
             </tbody>
@@ -50,13 +52,17 @@
 
         <div class="mt-3 d-flex gap-2">
 
+            @can('report', $aluno)
             <a href="{{ route('aluno.report', $aluno->id) }}" class="btn btn-danger">
                 <i class="bi bi-file-earmark-pdf-fill"></i>
             </a>
+            @endcan
 
+            @can('update', $aluno)
             <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-primary">Editar</a>
+            @endcan
 
-
+            @can('delete', $aluno)
             <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -64,6 +70,7 @@
                     Destruir
                 </button>
             </form>
+            @endcan
 
         </div>
 

@@ -27,11 +27,19 @@
         </table>
 
         <div class="mt-3 d-flex gap-2">
+            @can('update', $curso)
             <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-primary">Editar</a>
+            @endcan
 
+            @can('viewDiscents', App\Models\Curso::class)
             <a href="{{ route('cursos.alunos', $curso->id) }}" class="btn btn-secondary">Listar Discentes</a>
-            <a href="{{ route('cursos.disciplinas', $curso->id) }}" class="btn btn-secondary">Listar Disciplinas</a>
+            @endcan
 
+            @can('viewClasses', App\Models\Curso::class)
+            <a href="{{ route('cursos.disciplinas', $curso->id) }}" class="btn btn-secondary">Listar Disciplinas</a>
+            @endcan
+
+            @can('delete', $curso)
             <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -39,6 +47,7 @@
                     Matar
                 </button>
             </form>
+            @endcan
         </div>
 
     </div>

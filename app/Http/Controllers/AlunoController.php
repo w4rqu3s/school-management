@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -15,18 +16,24 @@ class AlunoController extends Controller
 {
     public function index()
     {
+        Gate::authorize('viewAny', Aluno::class);
+
         $alunos = Aluno::all();
         return view('alunos.index', compact('alunos'));
     }
 
     public function create()
     {
+        Gate::authorize('create', Aluno::class);
+
         $cursos = Curso::all();
         return view('alunos.create', compact('cursos'));
     }
 
     public function store(Request $request)
     {
+        Gate::authorize('create', Aluno::class);
+
         $aluno = new Aluno();
 
         $aluno->nome = strtoupper($request->nome);
@@ -48,8 +55,11 @@ class AlunoController extends Controller
 
     public function show(string $id)
     {
+        
         $aluno = Aluno::find($id);
-
+        
+        Gate::authorize('view', $aluno);
+        
         if(isset($aluno)) {
             return view('alunos.show', compact('aluno'));
         }
@@ -59,7 +69,11 @@ class AlunoController extends Controller
 
     public function edit(string $id)
     {
+        
         $aluno = Aluno::find($id);
+
+        Gate::authorize('update', $aluno);
+
         $cursos = Curso::all();
 
         if(isset($aluno)) {
@@ -72,6 +86,8 @@ class AlunoController extends Controller
     public function update(Request $request, string $id)
     {
         $aluno = Aluno::find($id);
+        
+        Gate::authorize('update', $aluno);
 
         if(isset($aluno)) {
 
@@ -98,6 +114,8 @@ class AlunoController extends Controller
     {
         $aluno = Aluno::find($id);
 
+        Gate::authorize('delete', $aluno);
+
         if(isset($aluno)) {
 
             if ($aluno->foto) {
@@ -113,11 +131,13 @@ class AlunoController extends Controller
     public function report($id) {
         $aluno = Aluno::with('curso')->findOrFail($id);
 
+        Gate::authorize('report', $aluno);
+
         $pdf = Pdf::loadView('alunos.report', compact('aluno'));
 
         return $pdf->stream('{$aluno->nome}_report.pdf');
 
-        // return $pdf->download('document.pdf');
+        // return $pdf->download('document.pdf');   (baixar o pdf)
 
     }
 }
