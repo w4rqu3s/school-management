@@ -1,59 +1,222 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 School Management – Sistema de Gerenciamento Escolar  
+Aplicação desenvolvida em **Laravel 12**, com autenticação, controle de acesso, CRUD completo de alunos, cursos e disciplinas, e geração de relatórios em PDF.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+## 📖 Sobre o Projeto
+Este é um sistema web de gerenciamento escolar criado para fins acadêmicos.  
+O objetivo é permitir que professores e coordenadores gerenciem:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Alunos**
+- **Cursos**
+- **Disciplinas**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Além disso, o sistema conta com:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+✔ Upload e gerenciamento de fotos  
+✔ Controle de permissões baseado em papéis  
+✔ Relatórios em PDF  
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## ⚙️ Funcionalidades
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 👨‍🏫 **Autenticação**
+- Login e logout
+- Dois perfis de usuário:
+  - **Professor** → pode cadastrar, editar, visualizar e listar alunos, além de gerar PDF  
+  - **Coordenador** → acesso total ao sistema (cursos, disciplinas e alunos)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🧑‍🎓 **CRUD de Alunos**
+- Criar / Lista / Editar / Remover
+- Upload de foto
+- Associação com curso
+- Visualização individual
+- Geração de relatório PDF do aluno
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 📘 **CRUD de Cursos**
+- Cadastro completo
+- Relação 1:N com alunos
+- Relação 1:N com disciplinas
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 📚 **CRUD de Disciplinas**
+- Cada disciplina pertence a um curso
+- CRUD completo para coordenadores
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 🖼 **Upload de Fotos**
+- Armazenamento via `storage/app/public`
+- Acesso via `storage:link`
+- Persistência via caminho salvo no banco
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 📄 **PDF**
+- Utiliza **Laravel DomPDF**
+- PDF gerado com foto, curso, grau e informações do aluno
+> OBS: Para renderizar arquivos WEBP no pdf, é necessário habilitar o suporte a arquivos webp do php ("extension=gd" no php.ini)
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 🛠 Tecnologias Utilizadas
+- **PHP 8.2**
+- **Laravel 12**
+- **MySQL**
+- **Blade Templates**
+- **Laravel DomPDF**
+- **Bootstrap**
+- **Composer**
+
+---
+
+## 📋 Requisitos
+
+- PHP >= 8.1  
+- Composer  
+- MySQL ou MariaDB  
+- Extensões:
+  - `gd` (necessária para imagens no PDF)
+  - `fileinfo`  
+  - `openssl`  
+
+---
+
+## 🚀 Instalação e Configuração
+
+### 1. Clonar o repositório
+```bash
+git clone https://github.com/seu_usuario/seu_repositorio.git
+cd seu_repositorio
+````
+
+### 2. Instalar dependências
+
+```bash
+composer install
+```
+
+### 3. Criar arquivo `.env`
+
+```bash
+cp .env.example .env
+```
+
+Configure banco de dados, APP_URL, etc.
+
+### 4. Gerar key do Laravel
+
+```bash
+php artisan key:generate
+```
+
+### 5. Criar banco e rodar migrations + seeders
+
+```bash
+php artisan migrate --seed
+```
+
+### 6. Criar link de acesso a storage
+
+```bash
+php artisan storage:link
+```
+
+### 7. Iniciar servidor
+
+```bash
+php artisan serve
+```
+
+---
+
+## 🔐 Autenticação e Perfis de Usuário
+
+O sistema possui controle de permissões baseado em **policy** e **middleware**:
+
+* Professores podem:
+
+  * Gerenciar alunos
+  * Gerar PDF
+* Coordenadores podem:
+
+  * Gerenciar tudo (alunos, cursos, disciplinas)
+
+Isso é definido por um campo `role` no usuário:
+
+```
+0 = Professor
+1 = Coordenador
+```
+
+---
+
+## 📄 Geração de PDFs
+
+O sistema usa **Laravel DomPDF**.
+
+Exemplo de view PDF:
+
+```
+resources/views/alunos/report.blade.php
+```
+
+Dentro do `AlunoController` existe:
+
+```php
+public function gerarPdf($id)
+{
+    $aluno = Aluno::with('curso')->findOrFail($id);
+    $pdf = Pdf::loadView('alunos.pdf', compact('aluno'));
+    return $pdf->stream("relatorio_{$aluno->nome}.pdf");
+}
+```
+
+---
+
+## 🧭 Rotas Principais
+
+### Alunos
+
+* `/alunos`
+* `/alunos/create`
+* `/alunos/{id}`
+* `/alunos/{id}/edit`
+* `/alunos/{id}/report`
+
+### Cursos
+
+* `/cursos`
+* `/cursos/{id}`
+
+### Disciplinas
+
+* `/disciplinas`
+* `/disciplinas/create`
+
+---
+
+## 🖼 Imagens do Projeto
+
+<img width="1868" height="884" alt="image" src="https://github.com/user-attachments/assets/1746d3c8-9cf2-4b79-91b0-b5bd0b18d9e0" />
+<img width="1868" height="884" alt="image" src="https://github.com/user-attachments/assets/e5389c2a-cde0-4bab-8b75-499d807fd28d" />
+<img width="1868" height="884" alt="image" src="https://github.com/user-attachments/assets/6a4e17ee-9135-40d1-9ed8-8f47d14f6e51" />
+
+---
+
+## 👤 Autor
+
+**Victor Pecine Marques**
+Desenvolvedor / Estudante
+📧 Email
+🐙 GitHub
+
+---
+
