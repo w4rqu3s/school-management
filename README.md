@@ -213,10 +213,8 @@ public function gerarPdf($id)
 
 ## 👤 Autor
 
-**Victor Pecine Marques**
+**Victor Pecine Marques**  
 Desenvolvedor / Estudante
-📧 Email
-🐙 GitHub
 
 ---
 
